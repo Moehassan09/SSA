@@ -10,9 +10,10 @@ const navigation = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Announcements", href: "/admin/announcements", icon: Megaphone },
     { name: "Executives", href: "/admin/executives", icon: Users },
-    { name: "Events", href: "/admin/events", icon: Calendar }, // Placeholder
-    { name: "Tasks", href: "/admin/tasks", icon: ListTodo }, // Placeholder
-    { name: "Meetings", href: "/admin/meetings", icon: Users }, // Placeholder
+    { name: "Events", href: "/admin/events", icon: Calendar },
+    { name: "Tasks", href: "/admin/tasks", icon: ListTodo },
+    { name: "Meetings", href: "/admin/meetings", icon: Users },
+    { name: "Users", href: "/admin/users", icon: Users },
 ];
 
 export function AdminSidebar() {

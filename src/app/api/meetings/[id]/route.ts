@@ -15,25 +15,23 @@ export async function PUT(
         }
 
         const body = await req.json();
-        const { title, description, priority, status, dueDate, assignedToId } = body;
+        const { title, date, location, agenda } = body;
 
-        const task = await prisma.task.update({
+        const meeting = await prisma.meeting.update({
             where: {
                 id: params.id,
             },
             data: {
                 title,
-                description,
-                priority,
-                status,
-                dueDate: dueDate ? new Date(dueDate) : null,
-                assignedToId: assignedToId || null,
+                date: new Date(date),
+                location,
+                agenda,
             },
         });
 
-        return NextResponse.json(task);
+        return NextResponse.json(meeting);
     } catch (error) {
-        console.error("[TASK_PUT]", error);
+        console.error("[MEETING_PUT]", error);
         return new NextResponse("Internal Error", { status: 500 });
     }
 }
@@ -49,15 +47,15 @@ export async function DELETE(
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
-        const task = await prisma.task.delete({
+        const meeting = await prisma.meeting.delete({
             where: {
                 id: params.id,
             },
         });
 
-        return NextResponse.json(task);
+        return NextResponse.json(meeting);
     } catch (error) {
-        console.error("[TASK_DELETE]", error);
+        console.error("[MEETING_DELETE]", error);
         return new NextResponse("Internal Error", { status: 500 });
     }
 }
